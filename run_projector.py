@@ -60,7 +60,8 @@ def project_real_images(network_pkl, dataset_name, data_dir, num_images, num_sna
 
     print('Loading images from "%s"...' % dataset_name)
     dataset_obj = dataset.load_dataset(data_dir=data_dir, tfrecord_dir=dataset_name, max_label_size=0, repeat=False, shuffle_mb=0)
-    assert dataset_obj.shape == Gs.output_shape[1:]
+    assert dataset_obj.shape == Gs.output_shape[1:], "%sexpected shape %s, got %s%s"%(dnnlib.util.Col.RB, Gs.output_shape[1:], dataset_obj.shape, dnnlib.util.Col.AU)
+
 
     for image_idx in range(num_images):
         print('Projecting image %d/%d ...' % (image_idx, num_images))
@@ -138,6 +139,8 @@ Run 'python %(prog)s <subcommand> --help' for subcommand help.''',
         'project-generated-images': 'run_projector.project_generated_images',
         'project-real-images': 'run_projector.project_real_images'
     }
+    print(dnnlib.util.Col.YB, "run_projector %s func_name_map[subcmd]"%subcmd, func_name_map[subcmd])
+    print("kwargs", kwargs, dnnlib.util.Col.AU)
     dnnlib.submit_run(sc, func_name_map[subcmd], **kwargs)
 
 #----------------------------------------------------------------------------

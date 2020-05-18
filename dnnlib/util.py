@@ -30,7 +30,13 @@ from typing import Any, List, Tuple, Union
 
 # Util classes
 # ------------------------------------------------------------------------------------------
-
+class Col:
+    AU = '\033[0m'
+    BB = '\033[94m\033[1m'
+    GB = '\033[92m\033[1m'
+    YB = '\033[93m\033[1m'
+    RB = '\033[91m\033[1m'
+    B = '\033[1m'
 
 class EasyDict(dict):
     """Convenience class that behaves like a dict but allows access with the attribute syntax."""

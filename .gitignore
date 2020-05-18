@@ -1,2 +1,6 @@
 /.stylegan2-cache/
 __pycache__/
+
+*.so
+test_nvcc
+.vscode/

@@ -22,7 +22,7 @@ import traceback
 from enum import Enum
 
 from .. import util
-from ..util import EasyDict
+from ..util import EasyDict, Col
 
 from . import internal
 

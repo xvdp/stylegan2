@@ -50,7 +50,7 @@ class TFRecordDataset:
         self._cur_lod           = -1
 
         # List tfrecords files and inspect their shapes.
-        assert os.path.isdir(self.tfrecord_dir)
+        assert os.path.isdir(self.tfrecord_dir), "%sdir <%s> not found!? %s"%(dnnlib.util.Col.RB, self.tfrecord_dir, dnnlib.util.Col.AU)
         tfr_files = sorted(glob.glob(os.path.join(self.tfrecord_dir, '*.tfrecords')))
         assert len(tfr_files) >= 1
         tfr_shapes = []
@@ -125,7 +125,7 @@ class TFRecordDataset:
     # Use the given minibatch size and level-of-detail for the data returned by get_minibatch_tf().
     def configure(self, minibatch_size, lod=0):
         lod = int(np.floor(lod))
-        assert minibatch_size >= 1 and lod in self._tf_datasets
+        assert minibatch_size >= 1 and lod in self._tf_datasets, "%sminibatch %d%s"%(dnnlib.util.Col.RB, minibatch_size, dnnlib.util.Col.AU)
         if self._cur_minibatch != minibatch_size or self._cur_lod != lod:
             self._tf_init_ops[lod].run({self._tf_minibatch_in: minibatch_size})
             self._cur_minibatch = minibatch_size
@@ -178,7 +178,7 @@ class TFRecordDataset:
 #----------------------------------------------------------------------------
 # Helper func for constructing a dataset object using the given options.
 
-def load_dataset(class_name=None, data_dir=None, verbose=False, **kwargs):
+def load_dataset(class_name=None, data_dir=None, verbose=True, **kwargs):
     kwargs = dict(kwargs)
     if 'tfrecord_dir' in kwargs:
         if class_name is None:
@@ -188,7 +188,7 @@ def load_dataset(class_name=None, data_dir=None, verbose=False, **kwargs):
 
     assert class_name is not None
     if verbose:
-        print('Streaming data using %s...' % class_name)
+        print(dnnlib.util.Col.GB, 'Streaming data using %s...' % class_name, dnnlib.util.Col.AU)
     dataset = dnnlib.util.get_obj_by_name(class_name)(**kwargs)
     if verbose:
         print('Dataset shape =', np.int32(dataset.shape).tolist())
