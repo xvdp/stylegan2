@@ -4,3 +4,5 @@ __pycache__/
 *.so
 test_nvcc
 .vscode/
+results/
+networks/

@@ -310,6 +310,7 @@ def run_wrapper(submit_config: SubmitConfig) -> None:
 def submit_run(submit_config: SubmitConfig, run_func_name: str, **run_func_kwargs) -> None:
     """Create a run dir, gather files related to the run, copy files to the run dir, and launch the run in appropriate place."""
     submit_config = copy.deepcopy(submit_config)
+    print(Col.YB, "dnnlib.submission.submit submit_config", submit_config)
 
     submit_target = submit_config.submit_target
     farm = None
@@ -340,4 +341,5 @@ def submit_run(submit_config: SubmitConfig, run_func_name: str, **run_func_kwarg
     # Farm specific preparations for a submit
     farm.finalize_submit_config(submit_config, host_run_dir)
     _populate_run_dir(submit_config, host_run_dir)
+    print("dnnlib.submission.submit host_run_dir", host_run_dir, Col.AU)
     return farm.submit(submit_config, host_run_dir)
