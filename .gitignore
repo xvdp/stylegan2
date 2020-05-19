@@ -4,6 +4,7 @@ __pycache__/
 *.so
 test_nvcc
 .vscode/
+graphs/
 results/
 networks/
 .ipynb_checkpoints/
