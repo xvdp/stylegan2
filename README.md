@@ -1,5 +1,10 @@
 ## StyleGAN2 &mdash; Official TensorFlow Implementation
 
+### Modifications xvdp
+* add some debug print to trace processes
+* save .npy out of generated images random latent vectors
+* added jupyter notebooks testing generation and projection of faces from the wild
+
 ![Teaser image](./docs/stylegan2-teaser-1024x256.png)
 
 **Analyzing and Improving the Image Quality of StyleGAN**<br>

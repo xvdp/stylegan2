@@ -6,3 +6,4 @@ test_nvcc
 .vscode/
 results/
 networks/
+.ipynb_checkpoints/
