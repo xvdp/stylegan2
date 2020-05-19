@@ -5,6 +5,7 @@
 * save .npy out of generated images random latent vectors
 * added jupyter notebooks testing generation and projection of faces from the wild
 
+### Original content
 ![Teaser image](./docs/stylegan2-teaser-1024x256.png)
 
 **Analyzing and Improving the Image Quality of StyleGAN**<br>
