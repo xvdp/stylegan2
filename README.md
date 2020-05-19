@@ -3,7 +3,8 @@
 ### Modifications xvdp
 * add some debug print to trace processes
 * save .npy out of generated images random latent vectors
-* added jupyter notebooks testing generation and projection of faces from the wild
+* added jupyter notebook testing generation and projection of faces from the wild
+* added jupyter notebook to open a tensorboard graph
 
 #### Future development opportunity: how to extend projection to handle images outside of the latent space
 Projecting generated images works very well
