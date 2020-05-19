@@ -5,6 +5,14 @@
 * save .npy out of generated images random latent vectors
 * added jupyter notebooks testing generation and projection of faces from the wild
 
+#### Future development opportunity: how to extend projection to handle images outside of the latent space
+Projecting generated images works very well
+![Teaser image](./docs/project_generated.png)
+Projecting images scraped from the wild, fails: why and how do we extend this? Reproduction in jupyter notebook
+![Teaser image](./docs/project_fromwild.png)
+
+docs/
+
 ### Original content
 ![Teaser image](./docs/stylegan2-teaser-1024x256.png)
 
