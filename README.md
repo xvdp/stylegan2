@@ -1,4 +1,4 @@
-## StyleGAN2 &mdash; Official TensorFlow Implementation
+## StyleGAN2 &mdash; Official TensorFlow Implementation - Modified for analysis of opportunities
 
 ### Modifications xvdp
 * add some debug print to trace processes
