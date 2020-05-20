@@ -268,7 +268,8 @@ def run_wrapper(submit_config: SubmitConfig) -> None:
 
     exit_with_errcode = False
     try:
-        print("dnnlib: Running {0}() on {1}...".format(submit_config.run_func_name, submit_config.host_name))
+        print("%sdnnlib.submission.submit.py run_wrapper()%s"%(Col.YB, Col.AU))
+        print(" dnnlib: Running {0}() on {1}...".format(submit_config.run_func_name, submit_config.host_name))
         start_time = time.time()
 
         run_func_obj = util.get_obj_by_name(submit_config.run_func_name)
@@ -310,7 +311,13 @@ def run_wrapper(submit_config: SubmitConfig) -> None:
 def submit_run(submit_config: SubmitConfig, run_func_name: str, **run_func_kwargs) -> None:
     """Create a run dir, gather files related to the run, copy files to the run dir, and launch the run in appropriate place."""
     submit_config = copy.deepcopy(submit_config)
-    print(Col.YB, "dnnlib.submission.submit submit_config", submit_config)
+
+    # debug = run_func_kwargs.debug
+    # del run_func_kwargs.debug
+    # if debug:
+    #     print(Col.YB, "dnnlib.submission.submit.submit_run()\t submit_config")
+    #     for k in submit_config:
+    #         print("  %s[%s]%s"%(Col.YB, k, Col.AU), submit_config[k])
 
     submit_target = submit_config.submit_target
     farm = None
@@ -341,5 +348,5 @@ def submit_run(submit_config: SubmitConfig, run_func_name: str, **run_func_kwarg
     # Farm specific preparations for a submit
     farm.finalize_submit_config(submit_config, host_run_dir)
     _populate_run_dir(submit_config, host_run_dir)
-    print("dnnlib.submission.submit host_run_dir", host_run_dir, Col.AU)
+    print("%s\ndnnlib.submission.submit.py submit_run() host_run_dir \n\t%s%s"%(Col.YB, Col.AU, host_run_dir))
     return farm.submit(submit_config, host_run_dir)

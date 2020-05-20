@@ -33,7 +33,7 @@ _valid_configs = [
 
 #----------------------------------------------------------------------------
 
-def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, mirror_augment, metrics):
+def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, mirror_augment, metrics, debug=False):
     train     = EasyDict(run_func_name='training.training_loop.training_loop') # Options for training loop.
     G         = EasyDict(func_name='training.networks_stylegan2.G_main')       # Options for generator network.
     D         = EasyDict(func_name='training.networks_stylegan2.D_stylegan2')  # Options for discriminator network.
@@ -117,6 +117,10 @@ def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, m
     kwargs.submit_config = copy.deepcopy(sc)
     kwargs.submit_config.run_dir_root = result_dir
     kwargs.submit_config.run_desc = desc
+    if debug:
+        print("%srun_training.py run()%s"%(dnnlib.util.Col.BB, dnnlib.util.Col.AU))
+        for k in kwargs:
+            print("  %s[%s]%s"%(dnnlib.util.Col.BB, k, dnnlib.util.Col.AU), kwargs[k])
     dnnlib.submit_run(**kwargs)
 
 #----------------------------------------------------------------------------

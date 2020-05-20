@@ -180,6 +180,8 @@ class TFRecordDataset:
 
 def load_dataset(class_name=None, data_dir=None, verbose=True, **kwargs):
     kwargs = dict(kwargs)
+    print('training.dataset.py load_dataset(class_name=%s, data_dir=%s, %s)'%(str(class_name), str(data_dir), str(kwargs)))
+    print("class_name", class_name, "data_dir", data_dir, "kwargs", kwargs)
     if 'tfrecord_dir' in kwargs:
         if class_name is None:
             class_name = __name__ + '.TFRecordDataset'
@@ -188,7 +190,7 @@ def load_dataset(class_name=None, data_dir=None, verbose=True, **kwargs):
 
     assert class_name is not None
     if verbose:
-        print(dnnlib.util.Col.GB, 'Streaming data using %s...' % class_name, dnnlib.util.Col.AU)
+        print('%sStreaming data using...%s' %(dnnlib.util.Col.GB, dnnlib.util.Col.AU))
     dataset = dnnlib.util.get_obj_by_name(class_name)(**kwargs)
     if verbose:
         print('Dataset shape =', np.int32(dataset.shape).tolist())
