@@ -6,13 +6,15 @@
 * added jupyter notebook testing generation and projection of faces from the wild
 * added jupyter notebook to open a tensorboard graph
 
-#### Future development opportunity: how to extend projection to handle images outside of the latent space
+#### Open problem: how to extend projection to handle images outside of the latent space
 Projecting generated images works very well
 ![Teaser image](./docs/project_generated.png)
 Projecting images scraped from the wild, fails: why and how do we extend this? Reproduction in jupyter notebook
 ![Teaser image](./docs/project_fromwild.png)
 
-docs/
+#### Open problem: Training is too slow
+Trying the canonical training on ffhq from `run_training.py` for 25000Kimges of size 1024x1024 on minibatch size 32 would take ~112 Days on a 24GB Titan RXT. GPU Usage reported by code was 13.1GB, Total GPU Usage measured by the system was 17.9GB - of which ~ 1GB was devoted to User interface. 
+* StyleGAN2 has no concept of identity, has no concept of 3d, light, envirnonment, background. Could extracting higher level semantics, training on the abstracted data, and rebuilding the lighting, viewpoint, at generation end speed and generalize this up?
 
 ### Original content
 ![Teaser image](./docs/stylegan2-teaser-1024x256.png)
